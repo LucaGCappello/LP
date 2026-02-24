@@ -16,7 +16,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  image = '/Logo/1.png',
+  image = '/Logo/nexta_no_background.png'.png',
   url = typeof window !== 'undefined' ? window.location.href : '',
   type = 'website',
   publishedTime,
