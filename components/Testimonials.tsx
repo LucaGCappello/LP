@@ -4,20 +4,20 @@ const Testimonials: React.FC = () => {
   const reviews = [
     {
       name: "Michael Chen",
-      role: "Founder, Scale Digital",
-      text: "We went from zero LinkedIn presence to 17 qualified discovery calls in the first 45 days. Closed 4 new clients worth $78k in recurring revenue. This completely changed how we think about client acquisition.",
+      role: "CEO, TechFlow Solutions",
+      text: "Our customer support team was drowning in repetitive requests. Nexta built an AI system that now handles 87% of incoming queries automatically. We cut response time from 4 hours to 2 minutes and reduced support costs by $42k/year.",
       img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&q=80"
     },
     {
       name: "Jennifer Martinez",
-      role: "CEO, Growth Labs Agency",
-      text: "I was skeptical because I'd tried LinkedIn before with zero results. Within 3 weeks we had our calendar filled with ideal-fit prospects. We've since brought on 6 new retainer clients and had to expand our team.",
+      role: "Operations Director, Scale Ventures",
+      text: "We were spending 340 hours per month on manual data entry and lead qualification. Nexta's AI workflow reduced that to 45 hours. The ROI was immediate and our team can finally focus on high-value work.",
       img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&q=80"
     },
     {
       name: "David Thompson",
-      role: "Managing Partner, Apex Consulting",
-      text: "Finally, a predictable lead source that doesn't require me to do anything. We're booking 8-12 calls per month with decision-makers who actually have budget. Best ROI we've ever seen from any marketing channel.",
+      role: "Founder, Apex Consulting",
+      text: "I thought AI was just hype until Nexta showed us exactly where we were bleeding time and money. Their automation systems saved us $84k in the first year and our productivity has increased by 187%. This is the real deal.",
       img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80"
     }
   ];
@@ -29,7 +29,7 @@ const Testimonials: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold mb-20 text-center">
-          Real Results from <span className="text-gradient-blue">Real Agencies</span>
+          Real Results from <span className="text-gradient-blue">Real Businesses</span>
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">

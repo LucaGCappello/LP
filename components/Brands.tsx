@@ -31,7 +31,7 @@ const Brands: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <p className="text-center text-gray-500 text-xs font-semibold uppercase tracking-[0.2em] mb-12">
-          Trusted by Industry Leaders
+          Integrating With The Tools You Already Use
         </p>
 
         <div className="relative">

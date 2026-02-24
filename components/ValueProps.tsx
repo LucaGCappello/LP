@@ -16,22 +16,40 @@ const ValueProps: React.FC = () => {
               {/* Visual Representation of Strategy/Research */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                  <span className="text-gray-400 text-sm">Competitor Analysis</span>
+                  <span className="text-gray-400 text-sm">Operations Audit</span>
                   <span className="text-green-400 text-sm">Completed</span>
                 </div>
                 <div className="space-y-2">
-                  <div className="h-2 bg-white/10 rounded-full w-3/4" />
-                  <div className="h-2 bg-white/10 rounded-full w-1/2" />
-                  <div className="h-2 bg-white/10 rounded-full w-5/6" />
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-500 text-xs">Manual Processes</span>
+                    <span className="text-red-400 text-xs">42 identified</span>
+                  </div>
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-red-500/50 w-3/4" />
+                  </div>
+                  <div className="flex items-center justify-between mt-3">
+                    <span className="text-gray-500 text-xs">Response Delays</span>
+                    <span className="text-yellow-400 text-xs">8.2h avg</span>
+                  </div>
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-yellow-500/50 w-1/2" />
+                  </div>
+                  <div className="flex items-center justify-between mt-3">
+                    <span className="text-gray-500 text-xs">Data Fragmentation</span>
+                    <span className="text-orange-400 text-xs">12 systems</span>
+                  </div>
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-orange-500/50 w-5/6" />
+                  </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mt-6">
                   <div className="bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
-                    <div className="text-2xl font-bold text-white mb-1">20+</div>
-                    <div className="text-xs text-blue-200">Competitors Analyzed</div>
+                    <div className="text-2xl font-bold text-white mb-1">340h</div>
+                    <div className="text-xs text-blue-200">Time Wasted Monthly</div>
                   </div>
-                  <div className="bg-purple-500/10 p-4 rounded-xl border border-purple-500/20">
-                    <div className="text-2xl font-bold text-white mb-1">100%</div>
-                    <div className="text-xs text-purple-200">Unique Strategy</div>
+                  <div className="bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/20">
+                    <div className="text-2xl font-bold text-white mb-1">87%</div>
+                    <div className="text-xs text-cyan-200">Can Be Automated</div>
                   </div>
                 </div>
               </div>
@@ -39,14 +57,14 @@ const ValueProps: React.FC = () => {
           </div>
           <div className="order-1 md:order-2 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium uppercase tracking-wider">
-              01. Deep Research
+              01. Systems Diagnosis
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              We Don't Guess.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">We Architect.</span>
+              Most Companies Don't Have<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">A Talent Problem.</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              We go beyond surface-level insights. We analyze your market, dissect the top 20 competitors in your niche, and identify exactly who isn't getting served. Then, we build a bespoke strategy tailored to your voice and your goals. No templates, just data-backed precision.
+              They have a systems problem. Manual processes, repetitive admin work, delayed responses, human error, and data scattered across tools. Every inefficiency compounds. And every delay costs money. We identify exactly where your operations are bleeding time and resources.
             </p>
           </div>
         </div>
@@ -54,47 +72,71 @@ const ValueProps: React.FC = () => {
         {/* Section 2: Daily Content */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-medium uppercase tracking-wider">
-              02. Consistent Execution
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-medium uppercase tracking-wider">
+              02. AI Integration
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              Daily Content That<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Actually Converts.</span>
+              We Build AI Systems<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">That Work 24/7.</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              We post for you every single day. Highly optimized content designed not just for likes, but to turn viewers into buyers. We handle 100% of the engagement—responding to comments and nurturing relationships—so your profile grows while you sleep.
+              Not chatbots for show. Not generic automation. We engineer intelligent workflows that automatically qualify and route leads, process internal requests instantly, reduce response time from hours to seconds, and eliminate repetitive administrative tasks. Your team focuses on growth. AI handles execution.
             </p>
           </div>
 
           <div className="relative">
-            <div className="absolute inset-0 bg-purple-500/20 blur-[100px] rounded-full" />
+            <div className="absolute inset-0 bg-cyan-500/20 blur-[100px] rounded-full" />
             <div className="glass-panel p-8 rounded-3xl border border-white/10 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
-              {/* Visual Representation of Daily Content */}
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-gray-700 flex-shrink-0" />
-                <div className="space-y-3 flex-1">
-                  <div className="h-4 bg-white/20 rounded w-1/3" />
-                  <div className="h-16 bg-white/5 rounded border border-white/5 p-3">
-                    <div className="h-2 bg-white/10 rounded w-full mb-2" />
-                    <div className="h-2 bg-white/10 rounded w-2/3" />
-                  </div>
-                  <div className="flex gap-4 pt-2">
-                    <div className="flex items-center gap-2 text-gray-500 text-xs">
-                      <div className="w-4 h-4 bg-blue-500/20 rounded-full" />
-                      <span>1,240 Likes</span>
+              {/* Visual Representation of AI Workflow */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <span className="text-gray-400 text-sm">Automation Status</span>
+                  <span className="text-green-400 text-sm flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    Active
+                  </span>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
+                    <div className="w-8 h-8 rounded bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-500 text-xs">
-                      <div className="w-4 h-4 bg-green-500/20 rounded-full" />
-                      <span>48 Comments</span>
+                    <div className="flex-1">
+                      <div className="text-white text-sm font-medium">Lead Qualification</div>
+                      <div className="text-gray-500 text-xs">248 processed today</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
+                    <div className="w-8 h-8 rounded bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-white text-sm font-medium">Auto Responses</div>
+                      <div className="text-gray-500 text-xs">87 sent in &lt;2 sec</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5">
+                    <div className="w-8 h-8 rounded bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-white text-sm font-medium">Data Processing</div>
+                      <div className="text-gray-500 text-xs">1.2k tasks automated</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -right-6 top-1/2 -translate-y-1/2 bg-black/80 backdrop-blur-xl p-4 rounded-xl border border-white/10 shadow-2xl flex items-center gap-3 animate-pulse">
-                <div className="w-2 h-2 rounded-full bg-green-500" />
-                <span className="text-white text-sm font-medium">New Lead Captured</span>
+              {/* Floating Status Indicator */}
+              <div className="absolute -right-6 top-1/2 -translate-y-1/2 bg-black/80 backdrop-blur-xl p-4 rounded-xl border border-cyan-500/30 shadow-2xl flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                <span className="text-white text-sm font-medium">AI Processing</span>
               </div>
             </div>
           </div>
@@ -109,13 +151,13 @@ const ValueProps: React.FC = () => {
               <div className="space-y-6">
                 <div className="flex justify-between items-end">
                   <div>
-                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Monthly Revenue</p>
-                    <h3 className="text-4xl font-bold text-white">$42,500</h3>
+                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Cost Savings</p>
+                    <h3 className="text-4xl font-bold text-white">$84,200</h3>
                   </div>
                   <div className="text-green-400 flex items-center gap-1 text-sm font-medium bg-green-500/10 px-2 py-1 rounded-lg">
-                    +128%
+                    +187%
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                 </div>
@@ -134,14 +176,14 @@ const ValueProps: React.FC = () => {
           </div>
           <div className="order-1 md:order-2 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium uppercase tracking-wider">
-              03. Revenue Focus
+              03. Measurable ROI
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              From Engagement<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">To Income.</span>
+              Real Results,<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Not Buzzwords.</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              Vanity metrics don't pay the bills. We optimize your entire funnel to ensure attention turns into retention, and retention turns into revenue. We track every lead, nurture every prospect, and operationalize your LinkedIn presence so it becomes a reliable income stream.
+              We don't just deploy AI for show. Every automation we implement is measured against clear performance metrics: reduced costs, faster response times, increased throughput, and fewer errors. You get a complete performance dashboard showing exactly how much time and money your AI systems are saving every single day.
             </p>
           </div>
         </div>
