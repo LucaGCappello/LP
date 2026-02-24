@@ -292,7 +292,7 @@ const Hero: React.FC = () => {
 
           <button
             onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
-            className="relative z-10 flex items-center gap-2 bg-white text-black px-8 py-3.5 text-base font-bold hover:bg-gray-100 transition-all rounded-xl cursor-pointer hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] hover:scale-[1.02] active:scale-[0.98] group/btn"
+            className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 text-white px-8 py-3.5 text-base font-bold hover:from-blue-600 hover:via-blue-700 hover:to-cyan-600 transition-all rounded-xl cursor-pointer hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:scale-[1.02] active:scale-[0.98] group/btn"
           >
             Get Your AI Assessment
           </button>
