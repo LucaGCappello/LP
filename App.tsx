@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import BlogPage from './components/BlogPage';
 import ArticlePage from './components/ArticlePage';
 import HomePageSEO from './components/HomePageSEO';
+import CustomCursor from './components/CustomCursor';
 
 const HomePage: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const HomePage: React.FC = () => {
 const App: React.FC = () => {
   return (
     <div className="min-h-screen">
+      <CustomCursor />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blog" element={<BlogPage />} />
