@@ -102,13 +102,13 @@ const Hero: React.FC = () => {
       <Starfield />
 
       {/* Logo */}
-      <div className="mb-20 relative z-10 mt-4">
-        <img
-          src="Logo/nexta_no_background.png"
-          alt="Logo"
-          className="h-8 md:h-10 w-auto"
-        />
-      </div>
+      <div className="mb-20 relative z-10 mt-4 flex justify-center">
+  <img
+    src="Logo/nexta_no_background.png"
+    alt="Nexta Logo"
+    className="h-28 md:h-40 lg:h-52 w-auto"
+  />
+</div>
 
       {/* Headlines */}
       <div className="text-center max-w-5xl px-6 relative z-10 transition-all duration-1000">
