@@ -63,7 +63,7 @@ const CustomCursor: React.FC = () => {
             box-shadow 0.35s ease,
             background 0.35s ease;
 
-          opacity: 0.25;
+          opacity: 0.6; 
 
           background: radial-gradient(
             circle,
