@@ -8,10 +8,10 @@ const Footer: React.FC = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <img
-                src="Logo/nexta_no_background.png"
-                alt="Logo"
-                className="h-8 w-auto"
-              />
+  src="Logo/nexta_no_background.png"
+  alt="Nexta Agency Logo"
+  className="h-24 w-auto"
+/>
             </div>
             <p className="text-gray-400 max-w-sm">
               Transforming business operations through intelligent AI automation systems that reduce costs and multiply productivity.
