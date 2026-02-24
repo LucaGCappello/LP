@@ -89,7 +89,7 @@ const ArticlePage: React.FC = () => {
       name: 'Scale With Teddy',
       logo: {
         '@type': 'ImageObject',
-        url: '/Logo/1.png'
+        url: 'nexta_no_background.png'
       }
     },
     mainEntityOfPage: {
