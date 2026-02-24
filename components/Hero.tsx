@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
       {/* Logo */}
       <div className="mb-20 relative z-10 mt-4">
         <img
-          src="Logo/1.png"
+          src="Logo/nexta_no_background.png"
           alt="Logo"
           className="h-8 md:h-10 w-auto"
         />
