@@ -80,7 +80,7 @@ const ValueProps: React.FC = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">That Work 24/7.</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              Not chatbots for show. Not generic automation. We engineer intelligent workflows that automatically qualify and route leads, process internal requests instantly, reduce response time from hours to seconds, and eliminate repetitive administrative tasks. Your team focuses on growth. AI handles execution.
+              Not generic automation. We engineer intelligent workflows that automatically qualify and route leads, process internal requests instantly, reduce response time from hours to seconds, and eliminate repetitive administrative tasks. Your team focuses on growth. AI handles execution.
             </p>
           </div>
 
