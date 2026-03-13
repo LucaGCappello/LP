@@ -31,15 +31,15 @@ const BookingCalendar: React.FC = () => {
             };
         })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        (window as any).Cal("init", "teddy-15", { origin: "https://app.cal.com" });
+        (window as any).Cal("init", "nexta-15min", { origin: "https://app.cal.com" });
 
-        (window as any).Cal.ns["teddy-15"]("inline", {
-            elementOrSelector: "#my-cal-inline-teddy-15",
+        (window as any).Cal.ns["nexta-15min"]("inline", {
+            elementOrSelector: "#my-cal-inline-nexta-15min",
             config: { "layout": "month_view" },
-            calLink: "jackroberts/teddy-15",
+            calLink: "nexta-agency/15min",
         });
 
-        (window as any).Cal.ns["teddy-15"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+        (window as any).Cal.ns["nexta-15min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
     }, []);
 
     return (
@@ -55,7 +55,7 @@ const BookingCalendar: React.FC = () => {
                 </div>
 
                 <div className="bg-white/5 rounded-3xl p-4 border border-white/10 backdrop-blur-sm overflow-hidden min-h-[700px]">
-                    <div style={{ width: "100%", height: "100%", overflow: "scroll" }} id="my-cal-inline-teddy-15"></div>
+                    <div style={{ width: "100%", height: "100%", overflow: "scroll" }} id="my-cal-inline-nexta-15min"></div>
                 </div>
             </div>
         </section>

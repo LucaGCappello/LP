@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
                 {/* Profile Card */}
                 <div className="bg-white/5 rounded-2xl p-3 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
                   <div className="w-10 h-10 rounded-full p-[1px] bg-gradient-to-tr from-blue-500 to-purple-500">
-                    <img src="Logo/jack-profile.png" alt="Jack Roberts" className="w-full h-full rounded-full object-cover" />
+                    <img src="Logo/jack-profile.png" alt="Nexta Agency" className="w-full h-full rounded-full object-cover" />
                   </div>
                   <div>
                     <div className="text-sm font-bold text-white">Operations Dashboard</div>

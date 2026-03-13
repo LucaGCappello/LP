@@ -45,7 +45,7 @@ Your website now has a complete SEO infrastructure including:
   title: "Your Article Title",
   description: "Your article description for SEO",
   date: "2025-01-18",
-  author: "Jack Roberts",
+  author: "Nexta Agency",
   image: "/Logo/hero-graphic.png",
   category: "LinkedIn Strategy",
   tags: ["LinkedIn", "Lead Generation"],
@@ -103,7 +103,7 @@ Handles all meta tags and structured data. Usage:
   image="/path/to/image.jpg"
   type="article" // or "website"
   publishedTime="2025-01-18"
-  author="Jack Roberts"
+  author="Nexta Agency"
   tags={["tag1", "tag2"]}
   structuredData={{...}} // JSON-LD schema
 />

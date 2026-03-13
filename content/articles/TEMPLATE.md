@@ -2,7 +2,7 @@
 title: "Your Article Title Here"
 description: "A compelling 1-2 sentence description of your article that will appear in search results and social shares."
 date: "2025-01-18"
-author: "Jack Roberts"
+author: "Nexta Agency"
 image: "/Logo/hero-graphic.png"
 category: "LinkedIn Strategy"
 tags: ["LinkedIn", "Lead Generation", "B2B Marketing"]

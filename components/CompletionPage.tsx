@@ -12,15 +12,15 @@ const CompletionPage: React.FC = () => {
     script.onload = () => {
       // Initialize Cal.com
       if (window.Cal) {
-        window.Cal('init', 'teddy-15', { origin: 'https://app.cal.com' });
+        window.Cal('init', 'nexta-15min', { origin: 'https://app.cal.com' });
 
-        window.Cal.ns['teddy-15']('inline', {
-          elementOrSelector: '#my-cal-inline-teddy-15',
+        window.Cal.ns['nexta-15min']('inline', {
+          elementOrSelector: '#my-cal-inline-nexta-15min',
           config: { layout: 'month_view' },
-          calLink: 'jackroberts/teddy-15',
+          calLink: 'nexta-agency/15min',
         });
 
-        window.Cal.ns['teddy-15']('ui', {
+        window.Cal.ns['nexta-15min']('ui', {
           hideEventTypeDetails: false,
           layout: 'month_view'
         });
@@ -65,7 +65,7 @@ const CompletionPage: React.FC = () => {
       <div className="w-full max-w-4xl mx-auto bg-black/40 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl relative z-10 overflow-hidden">
         <div
           style={{ width: '100%', height: '100%', minHeight: '600px', overflow: 'scroll' }}
-          id="my-cal-inline-teddy-15"
+          id="my-cal-inline-nexta-15min"
         />
       </div>
     </section>
