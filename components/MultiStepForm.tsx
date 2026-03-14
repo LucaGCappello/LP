@@ -359,12 +359,6 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
             >
               Book My Free Automation Strategy Call
             </button>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="w-full bg-white/5 border border-white/10 text-gray-300 px-8 py-3 text-base font-medium hover:bg-white/10 hover:border-white/20 transition-all rounded-xl cursor-pointer hover:text-white"
-            >
-              Back to website
-            </button>
           </div>
         </div>
       </div>
