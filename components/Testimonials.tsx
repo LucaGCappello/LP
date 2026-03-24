@@ -1,6 +1,11 @@
 import React from 'react';
+import { Language } from '../utils/translations';
 
-const Testimonials: React.FC = () => {
+interface TestimonialsProps {
+  language?: Language;
+}
+
+const Testimonials: React.FC<TestimonialsProps> = ({ language = 'en' }) => {
   const reviews = [
     {
       name: "Michael Chen",

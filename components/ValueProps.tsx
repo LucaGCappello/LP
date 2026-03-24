@@ -1,6 +1,11 @@
 import React from 'react';
+import { Language } from '../utils/translations';
 
-const ValueProps: React.FC = () => {
+interface ValuePropsProps {
+  language?: Language;
+}
+
+const ValueProps: React.FC<ValuePropsProps> = ({ language = 'en' }) => {
   return (
     <section className="relative overflow-hidden">
       {/* Background Gradient Line */}

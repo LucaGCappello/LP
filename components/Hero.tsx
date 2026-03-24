@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { Language, useTranslation } from '../utils/translations';
 
 const Starfield: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -94,7 +95,12 @@ const Starfield: React.FC = () => {
   return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />;
 };
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  language?: Language;
+}
+
+const Hero: React.FC<HeroProps> = ({ language = 'en' }) => {
+  const t = useTranslation(language);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-4 pb-20 overflow-hidden bg-black">
@@ -114,12 +120,12 @@ const Hero: React.FC = () => {
       <div className="text-center max-w-5xl px-6 relative z-10 transition-all duration-1000">
 
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 opacity-0 animate-[fadeInUp_1s_ease-out_0.2s_forwards] leading-[1.1]">
-          <span className="text-white">Turn Operational Chaos Into</span><br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 animate-gradient-x">AI-Powered Performance</span>
+          <span className="text-white">{t.hero.title.split('with AI')[0]}</span><br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 animate-gradient-x">{language === 'pt' ? 'com IA' : 'with AI'}</span>
         </h1>
 
         <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12 opacity-0 animate-[fadeInUp_1s_ease-out_0.4s_forwards] font-light">
-          We diagnose inefficiencies in your business operations and deploy intelligent automation systems that <span className="text-white font-medium">reduce costs, eliminate repetitive tasks, and multiply team productivity</span> — with measurable ROI.
+          {t.hero.subtitle}
         </p>
 
         {/* Hero Dashboard Graphic (Reduced Size) */}
@@ -294,7 +300,7 @@ const Hero: React.FC = () => {
             onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
             className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 text-white px-8 py-3.5 text-base font-bold hover:from-blue-600 hover:via-blue-700 hover:to-cyan-600 transition-all rounded-xl cursor-pointer hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:scale-[1.02] active:scale-[0.98] group/btn"
           >
-            Get Your AI Assessment
+            {t.hero.cta}
           </button>
         </div>
       </div>

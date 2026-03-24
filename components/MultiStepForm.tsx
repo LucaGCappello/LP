@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { Language, useTranslation } from '../utils/translations';
 
 interface FormData {
   firstName: string;
@@ -21,9 +22,11 @@ interface AutomationResult {
 
 interface MultiStepFormProps {
   onComplete: () => void;
+  language?: Language;
 }
 
-const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
+const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete, language = 'en' }) => {
+  const t = useTranslation(language);
   const [currentStep, setCurrentStep] = useState(1);
   const [showResults, setShowResults] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -44,21 +47,21 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
   const webhookUrl = '';
 
   const businessTypeOptions = [
-    { label: 'Restaurant', icon: '🍽️' },
-    { label: 'Clinic / Healthcare', icon: '🏥' },
-    { label: 'Real Estate', icon: '🏠' },
-    { label: 'Hospitality / Guesthouse', icon: '🏨' },
-    { label: 'Local Service Business', icon: '🔧' },
-    { label: 'Other', icon: '💼' }
+    { label: t.form.step2.options.restaurant, value: 'Restaurant', icon: '🍽️' },
+    { label: t.form.step2.options.clinic, value: 'Clinic / Healthcare', icon: '🏥' },
+    { label: t.form.step2.options.realEstate, value: 'Real Estate', icon: '🏠' },
+    { label: t.form.step2.options.hospitality, value: 'Hospitality / Guesthouse', icon: '🏨' },
+    { label: t.form.step2.options.localService, value: 'Local Service Business', icon: '🔧' },
+    { label: t.form.step2.options.other, value: 'Other', icon: '💼' }
   ];
 
   const bottleneckOptions = [
-    { label: 'Answering customer messages', icon: '💬' },
-    { label: 'Booking & scheduling', icon: '📅' },
-    { label: 'Following up leads', icon: '📞' },
-    { label: 'Admin / paperwork', icon: '📋' },
-    { label: 'Customer support questions', icon: '❓' },
-    { label: 'Team coordination', icon: '👥' }
+    { label: t.form.step3.options.messages, value: 'Answering customer messages', icon: '💬' },
+    { label: t.form.step3.options.booking, value: 'Booking & scheduling', icon: '📅' },
+    { label: t.form.step3.options.leads, value: 'Following up leads', icon: '📞' },
+    { label: t.form.step3.options.admin, value: 'Admin / paperwork', icon: '📋' },
+    { label: t.form.step3.options.support, value: 'Customer support questions', icon: '❓' },
+    { label: t.form.step3.options.team, value: 'Team coordination', icon: '👥' }
   ];
 
   const volumeOptions = [
@@ -70,10 +73,10 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
   ];
 
   const processOptions = [
-    { label: 'Fully manual', icon: '✍️' },
-    { label: 'Manual + WhatsApp', icon: '💬' },
-    { label: 'Several disconnected tools', icon: '🔗' },
-    { label: 'Some automation already', icon: '⚙️' }
+    { label: t.form.step5.options.manual, value: 'Fully manual', icon: '✍️' },
+    { label: t.form.step5.options.whatsapp, value: 'Manual + WhatsApp', icon: '💬' },
+    { label: t.form.step5.options.disconnected, value: 'Several disconnected tools', icon: '🔗' },
+    { label: t.form.step5.options.automation, value: 'Some automation already', icon: '⚙️' }
   ];
 
 
@@ -107,39 +110,34 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
   };
 
   const getIndustryRecommendations = (businessType: string): string[] => {
-    const recommendationsMap: { [key: string]: string[] } = {
-      'Restaurant': [
-        'Reservation automation',
-        'WhatsApp booking assistant',
-        'Review automation'
-      ],
-      'Clinic / Healthcare': [
-        'Appointment automation',
-        'Reminder system',
-        'Intake forms'
-      ],
-      'Real Estate': [
-        'Lead qualification',
-        'Property inquiry automation',
-        'CRM follow-up'
-      ],
-      'Hospitality / Guesthouse': [
-        'Guest messaging automation',
-        'Booking workflows',
-        'Review automation'
-      ],
-      'Local Service Business': [
-        'Quote automation',
-        'Lead follow-up',
-        'Scheduling automation'
-      ],
-      'Other': [
-        'Lead automation',
-        'Support automation',
-        'Workflow automation'
-      ]
+    const recommendationsMap: { [key: string]: { en: string[]; pt: string[] } } = {
+      'Restaurant': {
+        en: ['Reservation automation', 'WhatsApp booking assistant', 'Review automation'],
+        pt: ['Automação de reservas', 'Assistente de reservas WhatsApp', 'Automação de avaliações']
+      },
+      'Clinic / Healthcare': {
+        en: ['Appointment automation', 'Reminder system', 'Intake forms'],
+        pt: ['Automação de agendamentos', 'Sistema de lembretes', 'Formulários de entrada']
+      },
+      'Real Estate': {
+        en: ['Lead qualification', 'Property inquiry automation', 'CRM follow-up'],
+        pt: ['Qualificação de leads', 'Automação de consultas', 'Follow-up de CRM']
+      },
+      'Hospitality / Guesthouse': {
+        en: ['Guest messaging automation', 'Booking workflows', 'Review automation'],
+        pt: ['Automação de mensagens', 'Fluxos de reserva', 'Automação de avaliações']
+      },
+      'Local Service Business': {
+        en: ['Quote automation', 'Lead follow-up', 'Scheduling automation'],
+        pt: ['Automação de orçamentos', 'Follow-up de leads', 'Automação de agendamentos']
+      },
+      'Other': {
+        en: ['Lead automation', 'Support automation', 'Workflow automation'],
+        pt: ['Automação de leads', 'Automação de suporte', 'Automação de fluxos']
+      }
     };
-    return recommendationsMap[businessType] || recommendationsMap['Other'];
+    const recs = recommendationsMap[businessType] || recommendationsMap['Other'];
+    return recs[language];
   };
 
   const calculateAutomationScore = (data: FormData): AutomationResult => {
@@ -266,18 +264,18 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-3xl font-bold text-white mb-2">Your Automation Opportunity Report</h3>
-            <p className="text-gray-400 text-sm">Generated for {formData.firstName} at {formData.businessName}</p>
+            <h3 className="text-3xl font-bold text-white mb-2">{t.form.results.title}</h3>
+            <p className="text-gray-400 text-sm">{t.form.results.generatedFor} {formData.firstName} {language === 'pt' ? 'na' : 'at'} {formData.businessName}</p>
           </div>
 
           <div className="bg-white/5 rounded-2xl border border-white/10 p-8 space-y-6">
             <div className="text-center pb-6 border-b border-white/10">
-              <p className="text-gray-400 text-sm uppercase tracking-widest mb-3">Automation Score</p>
+              <p className="text-gray-400 text-sm uppercase tracking-widest mb-3">{t.form.results.scoreLabel}</p>
               <div className="relative max-w-xs mx-auto mb-4">
                 <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
                   {automationResult.score}
                 </div>
-                <p className="text-gray-500 text-sm mt-1">out of 100</p>
+                <p className="text-gray-500 text-sm mt-1">{t.form.results.outOf}</p>
               </div>
               <div className="max-w-xs mx-auto bg-gray-800 rounded-full h-2 overflow-hidden">
                 <div
@@ -296,9 +294,9 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Estimated Time Lost</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">{t.form.results.timeLostLabel}</p>
                     <p className="text-2xl font-bold text-white">{automationResult.estimatedWeeklyHoursLost}</p>
-                    <p className="text-gray-500 text-xs mt-1">per week</p>
+                    <p className="text-gray-500 text-xs mt-1">{t.form.results.perWeek}</p>
                   </div>
                 </div>
               </div>
@@ -311,16 +309,16 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Monthly Efficiency Value</p>
+                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">{t.form.results.monthlyValueLabel}</p>
                     <p className="text-2xl font-bold text-white">{automationResult.estimatedMonthlyValue}</p>
-                    <p className="text-gray-500 text-xs mt-1">potential savings</p>
+                    <p className="text-gray-500 text-xs mt-1">{t.form.results.potentialSavings}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <p className="text-gray-400 text-xs uppercase tracking-wider mb-3">Top 3 Automation Opportunities</p>
+              <p className="text-gray-400 text-xs uppercase tracking-wider mb-3">{t.form.results.opportunitiesLabel}</p>
               <div className="space-y-2">
                 {automationResult.recommendations.map((rec, idx) => (
                   <div key={idx} className="flex items-center gap-3 bg-white/5 rounded-lg p-3 border border-white/10">
@@ -335,7 +333,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
 
             <div className="pt-4 border-t border-white/10">
               <p className="text-gray-400 text-sm leading-relaxed">
-                Based on your answers, your business may be losing <span className="text-white font-semibold">{automationResult.estimatedWeeklyHoursLost}</span> per week on manual processes. Your biggest bottleneck is <span className="text-white font-semibold">{formData.bottleneck.toLowerCase()}</span>, which represents a significant opportunity for improvement.
+                {t.form.results.summaryStart} <span className="text-white font-semibold">{automationResult.estimatedWeeklyHoursLost}</span> {t.form.results.summaryMiddle} <span className="text-white font-semibold">{formData.bottleneck.toLowerCase()}</span>, {t.form.results.summaryEnd}
               </p>
             </div>
           </div>
@@ -357,7 +355,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
               onClick={() => document.getElementById('booking-section')?.scrollIntoView({ behavior: 'smooth' })}
               className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 text-white px-8 py-4 text-base font-bold hover:from-blue-600 hover:via-blue-700 hover:to-cyan-600 transition-all rounded-xl cursor-pointer hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:scale-[1.02] active:scale-[0.98]"
             >
-              Book My Free Automation Strategy Call
+              {t.form.results.ctaButton}
             </button>
           </div>
         </div>
@@ -373,12 +371,12 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
             <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            Takes under 60 seconds
+            {t.form.trustText.time}
           </span>
           <span className="text-gray-700">•</span>
-          <span>No spam</span>
+          <span>{t.form.trustText.noSpam}</span>
           <span className="text-gray-700">•</span>
-          <span>Personalized automation insights</span>
+          <span>{t.form.trustText.insights}</span>
         </p>
       </div>
 
@@ -398,13 +396,13 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">Tell us about you</h3>
-              <p className="text-gray-500 text-sm">Step 1 of 5</p>
+              <h3 className="text-3xl font-bold text-white mb-2">{t.form.step1.title}</h3>
+              <p className="text-gray-500 text-sm">{t.form.step1.stepLabel}</p>
             </div>
 
             <div className="space-y-5">
               <div className="space-y-2">
-                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">First Name</label>
+                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">{t.form.step1.firstName}</label>
                 <input
                   ref={inputRef}
                   type="text"
@@ -413,11 +411,11 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   placeholder="John"
                   className={`w-full px-5 py-4 bg-white/5 border border-white/10 text-white rounded-xl focus:border-blue-500 focus:bg-white/10 outline-none transition-all placeholder:text-gray-600 ${errors.firstName ? 'border-red-500/50' : ''}`}
                 />
-                {errors.firstName && <p className="text-red-400 text-xs pl-2">{errors.firstName}</p>}
+                {errors.firstName && <p className="text-red-400 text-xs pl-2">{t.form.step1.errors.firstName}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">Business Name</label>
+                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">{t.form.step1.businessName}</label>
                 <input
                   type="text"
                   value={formData.businessName}
@@ -425,11 +423,11 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   placeholder="Acme Inc."
                   className={`w-full px-5 py-4 bg-white/5 border border-white/10 text-white rounded-xl focus:border-blue-500 focus:bg-white/10 outline-none transition-all placeholder:text-gray-600 ${errors.businessName ? 'border-red-500/50' : ''}`}
                 />
-                {errors.businessName && <p className="text-red-400 text-xs pl-2">{errors.businessName}</p>}
+                {errors.businessName && <p className="text-red-400 text-xs pl-2">{t.form.step1.errors.businessName}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">Work Email</label>
+                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">{t.form.step1.workEmail}</label>
                 <input
                   type="email"
                   value={formData.email}
@@ -437,11 +435,11 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   placeholder="john@acme.com"
                   className={`w-full px-5 py-4 bg-white/5 border border-white/10 text-white rounded-xl focus:border-blue-500 focus:bg-white/10 outline-none transition-all placeholder:text-gray-600 ${errors.email ? 'border-red-500/50' : ''}`}
                 />
-                {errors.email && <p className="text-red-400 text-xs pl-2">{errors.email}</p>}
+                {errors.email && <p className="text-red-400 text-xs pl-2">{t.form.step1.errors.email}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">Mobile Phone (Optional)</label>
+                <label className="text-xs text-gray-400 uppercase tracking-widest pl-2">{t.form.step1.phone}</label>
                 <input
                   type="tel"
                   value={formData.phone || ''}
@@ -449,7 +447,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   placeholder="+1 (555) 123-4567"
                   className="w-full px-5 py-4 bg-white/5 border border-white/10 text-white rounded-xl focus:border-blue-500 focus:bg-white/10 outline-none transition-all placeholder:text-gray-600"
                 />
-                <p className="text-gray-500 text-xs pl-2">Optional if you'd like us to contact you.</p>
+                <p className="text-gray-500 text-xs pl-2">{t.form.step1.phoneHelper}</p>
               </div>
             </div>
 
@@ -470,17 +468,17 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">What type of business do you run?</h3>
-              <p className="text-gray-500 text-sm">Step 2 of 5</p>
+              <h3 className="text-3xl font-bold text-white mb-2">{t.form.step2.title}</h3>
+              <p className="text-gray-500 text-sm">{t.form.step2.stepLabel}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {businessTypeOptions.map(opt => (
                 <button
-                  key={opt.label}
-                  onClick={() => handleAutoAdvance('businessType', opt.label)}
+                  key={opt.value}
+                  onClick={() => handleAutoAdvance('businessType', opt.value)}
                   className={`p-5 rounded-xl border text-left transition-all hover:scale-[1.02] ${
-                    formData.businessType === opt.label
+                    formData.businessType === opt.value
                       ? 'bg-gradient-to-r from-blue-500 to-cyan-500 border-blue-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.5)]'
                       : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
@@ -513,17 +511,17 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">What is your biggest operational bottleneck?</h3>
-              <p className="text-gray-500 text-sm">Step 3 of 5</p>
+              <h3 className="text-3xl font-bold text-white mb-2">{t.form.step3.title}</h3>
+              <p className="text-gray-500 text-sm">{t.form.step3.stepLabel}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {bottleneckOptions.map(opt => (
                 <button
-                  key={opt.label}
-                  onClick={() => handleAutoAdvance('bottleneck', opt.label)}
+                  key={opt.value}
+                  onClick={() => handleAutoAdvance('bottleneck', opt.value)}
                   className={`p-5 rounded-xl border text-left transition-all hover:scale-[1.02] ${
-                    formData.bottleneck === opt.label
+                    formData.bottleneck === opt.value
                       ? 'bg-gradient-to-r from-blue-500 to-cyan-500 border-blue-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.5)]'
                       : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
@@ -556,8 +554,8 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">How many customer requests do you handle per week?</h3>
-              <p className="text-gray-500 text-sm">Step 4 of 5</p>
+              <h3 className="text-3xl font-bold text-white mb-2">{t.form.step4.title}</h3>
+              <p className="text-gray-500 text-sm">{t.form.step4.stepLabel}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -600,19 +598,19 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">How are you currently handling this?</h3>
-              <p className="text-gray-500 text-sm">Step 5 of 5</p>
+              <h3 className="text-3xl font-bold text-white mb-2">{t.form.step5.title}</h3>
+              <p className="text-gray-500 text-sm">{t.form.step5.stepLabel}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {processOptions.map(opt => (
                 <button
-                  key={opt.label}
+                  key={opt.value}
                   onClick={() => {
-                    updateField('currentProcess', opt.label);
+                    updateField('currentProcess', opt.value);
                   }}
                   className={`p-5 rounded-xl border text-left transition-all hover:scale-[1.02] ${
-                    formData.currentProcess === opt.label
+                    formData.currentProcess === opt.value
                       ? 'bg-gradient-to-r from-blue-500 to-cyan-500 border-blue-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.5)]'
                       : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20'
                   }`}
@@ -645,10 +643,10 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete }) => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Analyzing automation opportunities...
+                    {t.form.buttons.submitting}
                   </span>
                 ) : (
-                  'Generate My Automation Report'
+                  t.form.buttons.submit
                 )}
               </button>
             </div>
