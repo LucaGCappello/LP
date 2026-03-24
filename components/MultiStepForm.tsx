@@ -80,12 +80,6 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete, language = 'e
   ];
 
 
-  useEffect(() => {
-    if (inputRef.current && currentStep === 1) {
-      inputRef.current.focus();
-    }
-  }, [currentStep]);
-
   const calculateTimeLoss = (weeklyRequests: string): string => {
     const timeLossMap: { [key: string]: string } = {
       '0 – 10': '2–4 hours',
