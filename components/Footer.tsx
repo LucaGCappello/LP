@@ -7,6 +7,47 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
   const t = useTranslation(language);
+
+  const handleCaseStudiesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSolutionsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const systemsDiagnosis = document.querySelector('h3:has-text("Systems Diagnosis"), h2:has-text("Systems Diagnosis"), h3:has-text("Most Companies"), h2:has-text("Most Companies")');
+    if (!systemsDiagnosis) {
+      const targetSection = document.evaluate(
+        "//*[contains(text(), 'Systems Diagnosis') or contains(text(), 'Most Companies')]",
+        document,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+      ).singleNodeValue as HTMLElement;
+
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } else {
+      systemsDiagnosis.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  const handleFormClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const formSection = document.evaluate(
+      "//*[contains(text(), 'Discover Your Automation Potential')]",
+      document,
+      null,
+      XPathResult.FIRST_ORDERED_NODE_TYPE,
+      null
+    ).singleNodeValue as HTMLElement;
+
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   return (
     <footer className="py-20 border-t border-white/5 relative bg-black/50 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-6">
@@ -26,10 +67,10 @@ const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
 
           <div className="flex flex-wrap gap-8 md:justify-end">
             <a href="#" className="text-gray-400 hover:text-white transition-colors opacity-50 cursor-not-allowed" onClick={(e) => e.preventDefault()}>Blog (Coming Soon)</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Case Studies</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Solutions</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">ROI Calculator</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors opacity-50 cursor-not-allowed" onClick={handleCaseStudiesClick}>Case Studies (Coming Soon)</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors" onClick={handleSolutionsClick}>Solutions</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors" onClick={handleFormClick}>ROI Calculator</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors" onClick={handleFormClick}>Contact</a>
           </div>
         </div>
 
