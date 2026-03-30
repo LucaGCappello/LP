@@ -25,7 +25,7 @@ const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
           </div>
 
           <div className="flex flex-wrap gap-8 md:justify-end">
-            <a href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors opacity-50 cursor-not-allowed" onClick={(e) => e.preventDefault()}>Blog (Coming Soon)</a>
             <a href="#" className="text-gray-400 hover:text-white transition-colors">Case Studies</a>
             <a href="#" className="text-gray-400 hover:text-white transition-colors">Solutions</a>
             <a href="#" className="text-gray-400 hover:text-white transition-colors">ROI Calculator</a>
@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
 
           <div className="flex gap-6 text-sm text-gray-600">
             <a href="/privacy" className="hover:text-white transition-colors">{t.footer.privacy}</a>
-            <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="/terms" className="hover:text-white transition-colors">{t.footer.terms}</a>
           </div>
         </div>
       </div>

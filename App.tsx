@@ -13,6 +13,9 @@ import ArticlePage from './components/ArticlePage';
 import HomePageSEO from './components/HomePageSEO';
 import CustomCursor from './components/CustomCursor';
 import LanguageToggle from './components/LanguageToggle';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+import CookieBanner from './components/CookieBanner';
 import { Language } from './utils/translations';
 
 const HomePage: React.FC<{ language: Language }> = ({ language }) => {
@@ -38,10 +41,11 @@ const App: React.FC = () => {
       <LanguageToggle currentLanguage={language} onLanguageChange={setLanguage} />
       <Routes>
         <Route path="/" element={<HomePage language={language} />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:slug" element={<ArticlePage />} />
+        <Route path="/privacy" element={<PrivacyPolicy language={language} />} />
+        <Route path="/terms" element={<TermsOfService language={language} />} />
       </Routes>
       <Footer language={language} />
+      <CookieBanner language={language} />
     </div>
   );
 };
