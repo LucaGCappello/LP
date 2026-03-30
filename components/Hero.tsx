@@ -166,7 +166,6 @@ const Hero: React.FC<HeroProps> = ({ language = 'en' }) => {
         alt="Nexta Agency" 
         className="w-7 h-7 object-contain"
       />
-    </div>
                   <div>
                     <div className="text-sm font-bold text-white">Operations Dashboard</div>
                     <div className="text-[10px] text-green-400">AI Monitoring</div>
