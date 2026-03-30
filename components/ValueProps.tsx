@@ -14,7 +14,7 @@ const ValueProps: React.FC<ValuePropsProps> = ({ language = 'en' }) => {
       <div className="max-w-7xl mx-auto px-6 space-y-32 py-32 relative z-10">
 
         {/* Section 1: Research & Strategy */}
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div id="systems-diagnosis" className="grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1 relative">
             <div className="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full" />
             <div className="glass-panel p-8 rounded-3xl border border-white/10 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">

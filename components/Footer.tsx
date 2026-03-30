@@ -15,34 +15,15 @@ const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
 
   const handleSolutionsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const systemsDiagnosis = document.querySelector('h3:has-text("Systems Diagnosis"), h2:has-text("Systems Diagnosis"), h3:has-text("Most Companies"), h2:has-text("Most Companies")');
-    if (!systemsDiagnosis) {
-      const targetSection = document.evaluate(
-        "//*[contains(text(), 'Systems Diagnosis') or contains(text(), 'Most Companies')]",
-        document,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
-      ).singleNodeValue as HTMLElement;
-
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    } else {
-      systemsDiagnosis.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const targetSection = document.getElementById('systems-diagnosis');
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
   const handleFormClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const formSection = document.evaluate(
-      "//*[contains(text(), 'Discover Your Automation Potential')]",
-      document,
-      null,
-      XPathResult.FIRST_ORDERED_NODE_TYPE,
-      null
-    ).singleNodeValue as HTMLElement;
-
+    const formSection = document.getElementById('contact-form');
     if (formSection) {
       formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }

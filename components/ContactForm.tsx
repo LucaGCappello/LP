@@ -20,7 +20,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ language = 'en' }) => {
   }
 
   return (
-    <section className="py-32 px-6 relative overflow-hidden">
+    <section id="contact-form" className="py-32 px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-blue-900/5 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
@@ -28,7 +28,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ language = 'en' }) => {
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16 space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 id="automation-potential" className="text-4xl md:text-5xl font-bold text-white">
             Discover Your <span className="text-gradient-blue">Automation Potential</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
