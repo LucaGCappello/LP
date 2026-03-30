@@ -376,7 +376,7 @@ const Hero: React.FC<HeroProps> = ({ language = 'en' }) => {
             opacity: 1;
           }
         }
-      `}</style>
+      </style>
     </section>
   );
 };
