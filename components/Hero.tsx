@@ -159,13 +159,15 @@ const Hero: React.FC<HeroProps> = ({ language = 'en' }) => {
               <div className="hidden md:flex flex-col gap-4 w-56 z-10">
                 {/* Profile Card */}
                 <div className="bg-white/5 rounded-2xl p-3 border border-white/10 flex items-center gap-3 hover:bg-white/10 transition-colors">
-  <div className="w-10 h-10 rounded-full p-[1px] bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
-    <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-      <img 
-        src="Logo/nexta_no_background.png" 
-        alt="Nexta Agency" 
-        className="w-7 h-7 object-contain"
-      />
+                  <div className="w-10 h-10 rounded-full p-[1px] bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center">
+                    <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+                      <img
+                        src="Logo/nexta_no_background.png"
+                        alt="Nexta Agency"
+                        className="w-7 h-7 object-contain"
+                      />
+                    </div>
+                  </div>
                   <div>
                     <div className="text-sm font-bold text-white">Operations Dashboard</div>
                     <div className="text-[10px] text-green-400">AI Monitoring</div>
@@ -376,7 +378,7 @@ const Hero: React.FC<HeroProps> = ({ language = 'en' }) => {
             opacity: 1;
           }
         }
-      </style>
+      `}</style>
     </section>
   );
 };

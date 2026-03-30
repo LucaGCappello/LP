@@ -39,8 +39,8 @@ const Footer: React.FC<FooterProps> = ({ language = 'en' }) => {
           </p>
 
           <div className="flex gap-6 text-sm text-gray-600">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="/privacy" className="hover:text-white transition-colors">{t.footer.privacy}</a>
+            <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

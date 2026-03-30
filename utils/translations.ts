@@ -107,6 +107,11 @@ export interface Translations {
     email: string;
     phone: string;
     rights: string;
+    privacy: string;
+  };
+  gdpr: {
+    consentText: string;
+    privacyPolicy: string;
   };
 }
 
@@ -226,7 +231,12 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
       email: 'hello@nexta.pt',
       phone: '+351 933 653 334',
-      rights: 'All rights reserved.'
+      rights: 'All rights reserved.',
+      privacy: 'Privacy Policy'
+    },
+    gdpr: {
+      consentText: 'By submitting this form, you agree to our collection and processing of your data as described in our Privacy Policy.',
+      privacyPolicy: 'Privacy Policy'
     }
   },
   pt: {
@@ -344,7 +354,12 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contato',
       email: 'hello@nexta.pt',
       phone: '+351 933 653 334',
-      rights: 'Todos os direitos reservados.'
+      rights: 'Todos os direitos reservados.',
+      privacy: 'Política de Privacidade'
+    },
+    gdpr: {
+      consentText: 'Ao enviar este formulário, você concorda com a nossa recolha e processamento dos seus dados conforme descrito na nossa Política de Privacidade.',
+      privacyPolicy: 'Política de Privacidade'
     }
   }
 };

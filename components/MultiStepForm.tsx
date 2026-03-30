@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Language, useTranslation } from '../utils/translations';
+import { formRateLimiter } from '../utils/rateLimiter';
 
 interface FormData {
   firstName: string;
@@ -11,6 +12,7 @@ interface FormData {
   bottleneck: string;
   weeklyRequests: string;
   currentProcess: string;
+  honeypot?: string;
 }
 
 interface AutomationResult {
@@ -37,7 +39,8 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete, language = 'e
     businessType: '',
     bottleneck: '',
     weeklyRequests: '',
-    currentProcess: ''
+    currentProcess: '',
+    honeypot: ''
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -206,6 +209,20 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete, language = 'e
   };
 
   const handleSubmit = async () => {
+    if (formData.honeypot) {
+      console.warn('Spam submission detected');
+      return;
+    }
+
+    const rateLimitCheck = formRateLimiter.check(formData.email);
+
+    if (!rateLimitCheck.allowed) {
+      setErrors({
+        submit: `Too many submissions. Please wait ${rateLimitCheck.remainingTime} seconds before trying again.`
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     const result = calculateAutomationScore(formData);
     setAutomationResult(result);
@@ -443,14 +460,30 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ onComplete, language = 'e
                 />
                 <p className="text-gray-500 text-xs pl-2">{t.form.step1.phoneHelper}</p>
               </div>
+
+              <input
+                type="text"
+                name="website"
+                value={formData.honeypot || ''}
+                onChange={(e) => updateField('honeypot', e.target.value)}
+                style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
             </div>
 
-            <button
-              onClick={handleNext}
-              className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 text-white py-4 rounded-xl font-bold text-lg hover:from-blue-600 hover:via-blue-700 hover:to-cyan-600 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)]"
-            >
-              Continue
-            </button>
+            <div className="space-y-4">
+              <p className="text-gray-500 text-xs text-center px-4">
+                {t.gdpr.consentText}
+              </p>
+              <button
+                onClick={handleNext}
+                className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 text-white py-4 rounded-xl font-bold text-lg hover:from-blue-600 hover:via-blue-700 hover:to-cyan-600 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)]"
+              >
+                Continue
+              </button>
+            </div>
           </div>
         )}
 
